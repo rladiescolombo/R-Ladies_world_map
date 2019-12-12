@@ -1,28 +1,8 @@
 ``` r
 library(ggplot2)
 library(maptools)
-```
-
-    ## Loading required package: sp
-
-    ## Checking rgeos availability: TRUE
-
-``` r
 library(tibble)
 library(tidyverse)
-```
-
-    ## ── Attaching packages ── tidyverse 1.2.1 ──
-
-    ## ✓ tidyr   1.0.0     ✓ dplyr   0.8.3
-    ## ✓ readr   1.3.1     ✓ stringr 1.4.0
-    ## ✓ purrr   0.3.3     ✓ forcats 0.4.0
-
-    ## ── Conflicts ───── tidyverse_conflicts() ──
-    ## x dplyr::filter() masks stats::filter()
-    ## x dplyr::lag()    masks stats::lag()
-
-``` r
 library(ggrepel)
 data(wrld_simpl)
 
@@ -34,11 +14,7 @@ p <- ggplot() +
   coord_cartesian(xlim = c(-180, 180), ylim = c(-90, 90)) +
   scale_x_continuous(breaks = seq(-180, 180, 120)) +
   scale_y_continuous(breaks = seq(-90, 90, 100))
-```
 
-    ## Regions defined for each Polygons
-
-``` r
 # R-Ladies current chapters: https://github.com/rladies/starter-kit/blob/master/Current-Chapters.csv
 df <- read.csv(here::here("Current-Chapters.csv"), header = TRUE) %>% as_tibble()
 df$City <- as.character(df$City)
@@ -93,12 +69,8 @@ p <- p +
 p
 ```
 
-    ## Warning: Removed 46 rows containing missing values (geom_point).
-
-![](README_files/figure-markdown_github/unnamed-chunk-1-1.png)
+![](README_files/figure-markdown_github/plot-1.png)
 
 ``` r
 ggsave(here::here("R-ladiesmap.png"), width = 15, height = 7)
 ```
-
-    ## Warning: Removed 46 rows containing missing values (geom_point).

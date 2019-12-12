@@ -7,11 +7,11 @@ output:
     variant: markdown_github
 ---
 
-```{r setup, include=FALSE, warnings = FALSE, messages=FALSE}
-knitr::opts_chunk$set(echo = TRUE,  warnings = FALSE, messages=FALSE)
+```{r setup, include=FALSE }
+knitr::opts_chunk$set(echo = TRUE,  warning = FALSE, message =FALSE)
 ```
 
-```{r, warnings = FALSE, messages=FALSE}
+```{r plot}
 library(ggplot2)
 library(maptools)
 library(tibble)
