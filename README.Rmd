@@ -8,14 +8,6 @@ output:
 ---
 <img src="Rladiescolombo.png" align="left" height="150" />
 
-
-
-
-
-
-
-
-
 ## Where we are?
 
 ```{r setup, include=FALSE }
@@ -43,6 +35,7 @@ p <- ggplot() +
 df <- read.csv(here::here("Current-Chapters.csv"), header = TRUE) %>% as_tibble()
 df$City <- as.character(df$City)
 df$Country <- as.character(df$Country)
+
 ## location details of the cities : https://simplemaps.com/data/world-cities
 location_df <- read.csv(here::here("worldcities.csv"), header = TRUE) %>% as_tibble()
 location_df$city <- as.character(location_df$city)
@@ -66,8 +59,6 @@ d_USA <- d %>%
 d_full <- bind_rows((d %>% filter(Country != "USA")), d_USA) %>%
   filter(Status != "Retired on 29-09-2019") %>%
   distinct(Country, City, .keep_all = TRUE)
-
-
 
 dsl <- d_full %>% filter(Country == "Sri Lanka")
 
