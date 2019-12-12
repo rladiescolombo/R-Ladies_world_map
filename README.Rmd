@@ -37,15 +37,32 @@ location_df <- read.csv(here::here("worldcities.csv"), header = TRUE) %>% as_tib
 location_df$city <- as.character(location_df$city)
 location_df$country <- as.character(location_df$country)
 
+## location details of US cities: https://simplemaps.com/data/us-cities
+location_us <- read.csv(here::here("uscities.csv"), header = TRUE) %>% as_tibble()
+location_us$city <- as.character(location_us$city)
+location_us$country <- "USA"
+
 d <- left_join(df, location_df, by = c("Country" = "country", "City" = "city")) %>%
   select(c("Country", "City", "Status", "lat", "lng"))
 
-dsl <- d %>% filter(Country == "Sri Lanka")
+d_USA <- d %>% filter(Country == "USA") %>% 
+  select("Country", "City", "Status") %>%
+  left_join(y = location_us, by = c( "City" = "city")) %>%
+  select(c("Country", "City", "Status", "lat", "lng")) %>%
+  distinct(City, .keep_all = TRUE)
+
+d_full <- bind_rows((d %>% filter(Country != "USA")), d_USA) %>% 
+  filter(Status != "Retired on 29-09-2019") %>%
+  distinct(Country, City, .keep_all = TRUE)
+
+
+
+dsl <- d_full %>% filter(Country == "Sri Lanka")
 
 
 p <- p +
   geom_point(
-    data = d, aes(x = lng, y = lat), color = "mediumpurple1", size
+    data = d_full, aes(x = lng, y = lat), color = "mediumpurple1", size
     = 1
   ) +
   geom_point(
