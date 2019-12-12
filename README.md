@@ -17,7 +17,7 @@ p <- ggplot() +
   scale_x_continuous(breaks = seq(-180, 180, 120)) +
   scale_y_continuous(breaks = seq(-90, 90, 100))
 
-
+# R-Ladies current chapters: https://github.com/rladies/starter-kit/blob/master/Current-Chapters.csv
 df <- read.csv(here::here("R-Ladies_map", "Current-Chapters.csv"), header = TRUE) %>% as_tibble()
 df$City <- as.character(df$City)
 df$Country <- as.character(df$Country)
