@@ -41,7 +41,6 @@ p <- p +
     data = dsl, aes(x = lng, y = lat), color = "darkorchid4", size
     = 1
   ) +
-  theme(axis.title = element_blank()) +
   geom_text_repel(
     data = dsl, aes(label = "R-Ladies Colombo", x = lng, y = lat),
     box.padding = 0.35,
@@ -49,7 +48,8 @@ p <- p +
     segment.color = "grey50",
     nudge_y = -20,
     color = "mediumorchid"
-  )
+  ) +
+  theme(axis.title = element_blank()) 
 
 ggsave(here::here("R-Ladies_map", "R-ladiesmap.png"), width = 15, height = 7)
 
