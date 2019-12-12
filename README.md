@@ -18,11 +18,11 @@ p <- ggplot() +
   scale_y_continuous(breaks = seq(-90, 90, 100))
 
 
-df <- read.csv(here::here("Rladies_world_map", "Current-Chapters.csv"), header = TRUE) %>% as_tibble()
+df <- read.csv(here::here("R-Ladies_map", "Current-Chapters.csv"), header = TRUE) %>% as_tibble()
 df$City <- as.character(df$City)
 df$Country <- as.character(df$Country)
 ## location details of the cities : https://simplemaps.com/data/world-cities
-location_df <- read.csv(here::here("Rladies_world_map", "worldcities.csv"), header = TRUE) %>% as_tibble()
+location_df <- read.csv(here::here("R-Ladies_map", "worldcities.csv"), header = TRUE) %>% as_tibble()
 location_df$city <- as.character(location_df$city)
 location_df$country <- as.character(location_df$country)
 
@@ -51,7 +51,7 @@ p <- p +
     color = "mediumorchid"
   )
 
-ggsave(here::here("Rladies_world_map", "R-ladiesmap.png"), width = 15, height = 7)
+ggsave(here::here("R-Ladies_map", "R-ladiesmap.png"), width = 15, height = 7)
 
 ```
 
