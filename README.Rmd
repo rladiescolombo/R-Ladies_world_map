@@ -1,31 +1,21 @@
-``` r
+---
+title: "R Ladies Global Map"
+author: Priyanga Dilini Talagala, Thiyanga Talagala
+date: December 12, 2019
+output:
+  md_document:
+    variant: markdown_github
+---
+
+```{r setup, include=FALSE, warnings = FALSE, messages=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, warnings = FALSE, messages=FALSE}
 library(ggplot2)
 library(maptools)
-```
-
-    ## Loading required package: sp
-
-    ## Checking rgeos availability: FALSE
-    ##      Note: when rgeos is not available, polygon geometry     computations in maptools depend on gpclib,
-    ##      which has a restricted licence. It is disabled by default;
-    ##      to enable gpclib, type gpclibPermit()
-
-``` r
 library(tibble)
 library(tidyverse)
-```
-
-    ## ── Attaching packages ────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
-
-    ## ✔ tidyr   0.8.3     ✔ dplyr   0.8.3
-    ## ✔ readr   1.3.1     ✔ stringr 1.4.0
-    ## ✔ purrr   0.3.3     ✔ forcats 0.4.0
-
-    ## ── Conflicts ───────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-    ## ✖ dplyr::filter() masks stats::filter()
-    ## ✖ dplyr::lag()    masks stats::lag()
-
-``` r
 library(ggrepel)
 data(wrld_simpl)
 
@@ -37,11 +27,7 @@ p <- ggplot() +
   coord_cartesian(xlim = c(-180, 180), ylim = c(-90, 90)) +
   scale_x_continuous(breaks = seq(-180, 180, 120)) +
   scale_y_continuous(breaks = seq(-90, 90, 100))
-```
 
-    ## Regions defined for each Polygons
-
-``` r
 # R-Ladies current chapters: https://github.com/rladies/starter-kit/blob/master/Current-Chapters.csv
 df <- read.csv(here::here("Current-Chapters.csv"), header = TRUE) %>% as_tibble()
 df$City <- as.character(df$City)
@@ -76,14 +62,6 @@ p <- p +
   ) +
   theme(axis.title = element_blank()) 
 p
-```
-
-    ## Warning: Removed 129 rows containing missing values (geom_point).
-
-![](README_files/figure-markdown_github/unnamed-chunk-1-1.png)
-
-``` r
 ggsave(here::here("R-ladiesmap.png"), width = 15, height = 7)
-```
 
-    ## Warning: Removed 129 rows containing missing values (geom_point).
+```
