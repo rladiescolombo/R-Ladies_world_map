@@ -7,6 +7,11 @@ output:
     variant: markdown_github
 ---
 
+## Where we are?
+
+- authors: Priyanga Dilini Talagala, Thiyanga Talagala
+- date: December 12, 2019
+
 ```{r setup, include=FALSE }
 knitr::opts_chunk$set(echo = TRUE,  warning = FALSE, message =FALSE)
 ```
