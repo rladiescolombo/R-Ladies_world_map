@@ -1,5 +1,5 @@
-Where we are?
--------------
+<img src="Rladiescolombo.png" align="left" height="150" /> \#\# Where we
+are?
 
 ``` r
 library(ggplot2)
