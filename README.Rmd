@@ -8,7 +8,7 @@ output:
 ---
 
 ```{r setup, include=FALSE, warnings = FALSE, messages=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,  warnings = FALSE, messages=FALSE)
 ```
 
 ```{r, warnings = FALSE, messages=FALSE}
@@ -45,13 +45,14 @@ location_us$country <- "USA"
 d <- left_join(df, location_df, by = c("Country" = "country", "City" = "city")) %>%
   select(c("Country", "City", "Status", "lat", "lng"))
 
-d_USA <- d %>% filter(Country == "USA") %>% 
+d_USA <- d %>%
+  filter(Country == "USA") %>%
   select("Country", "City", "Status") %>%
-  left_join(y = location_us, by = c( "City" = "city")) %>%
+  left_join(y = location_us, by = c("City" = "city")) %>%
   select(c("Country", "City", "Status", "lat", "lng")) %>%
   distinct(City, .keep_all = TRUE)
 
-d_full <- bind_rows((d %>% filter(Country != "USA")), d_USA) %>% 
+d_full <- bind_rows((d %>% filter(Country != "USA")), d_USA) %>%
   filter(Status != "Retired on 29-09-2019") %>%
   distinct(Country, City, .keep_all = TRUE)
 
@@ -77,8 +78,7 @@ p <- p +
     nudge_y = -20,
     color = "blueviolet"
   ) +
-  theme(axis.title = element_blank()) 
+  theme(axis.title = element_blank())
 p
 ggsave(here::here("R-ladiesmap.png"), width = 15, height = 7)
-
 ```
