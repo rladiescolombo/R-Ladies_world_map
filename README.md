@@ -4,6 +4,13 @@ Where we are?
 -------------
 
 ``` r
+library(ggplot2)
+library(maptools)
+library(tibble)
+library(tidyverse)
+library(ggrepel)
+library(png)
+library(grid)
 data(wrld_simpl)
 
 p <- ggplot() +

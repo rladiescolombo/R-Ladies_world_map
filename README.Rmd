@@ -12,6 +12,9 @@ output:
 
 ```{r setup, include=FALSE }
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+```{r plot}
 library(ggplot2)
 library(maptools)
 library(tibble)
@@ -19,9 +22,6 @@ library(tidyverse)
 library(ggrepel)
 library(png)
 library(grid)
-```
-
-```{r plot}
 data(wrld_simpl)
 
 p <- ggplot() +
