@@ -4,11 +4,6 @@ Where we are?
 -------------
 
 ``` r
-library(ggplot2)
-library(maptools)
-library(tibble)
-library(tidyverse)
-library(ggrepel)
 data(wrld_simpl)
 
 p <- ggplot() +
@@ -49,7 +44,7 @@ d_full <- bind_rows((d %>% filter(Country != "USA")), d_USA) %>%
   filter(Status != "Retired on 29-09-2019") %>%
   distinct(Country, City, .keep_all = TRUE)
 
-dsl <- d_full %>% filter(Country == "Sri Lanka")
+dsl <- d_full %>% filter(Country == "Sri Lanka", City == "Colombo")
 
 
 p <- p +
@@ -78,5 +73,15 @@ p
 ``` r
 ggsave(here::here("R-ladiesmap.png"), width = 15, height = 7)
 ```
+
+``` r
+pic <- readPNG("colombocity.png")
+g <- rasterGrob(pic, interpolate=TRUE)
+
+p + annotation_custom(g, xmin = -Inf, xmax = Inf, ymin = -225, ymax = Inf) +
+  geom_point()
+```
+
+![](README_files/figure-markdown_github/addcolombocity-1.png)
 
 Last updated: `2019-12-13`
