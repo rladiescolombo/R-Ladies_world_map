@@ -78,10 +78,21 @@ ggsave(here::here("R-ladiesmap.png"), width = 15, height = 7)
 pic <- readPNG("colombocity.png")
 g <- rasterGrob(pic, interpolate=TRUE)
 
-p + annotation_custom(g, xmin = -Inf, xmax = Inf, ymin = -225, ymax = Inf) +
+q <- p + annotation_custom(g, xmin = -Inf, xmax = Inf, ymin = -225, ymax = Inf) +
   geom_point()
+q
 ```
 
 ![](README_files/figure-markdown_github/addcolombocity-1.png)
+
+``` r
+code <- paste("R_Ladies_Global %>% filter(Chapter == ``Colombo``, Country == ``Sri Lanka``)"  )
+
+r <- q + annotate(geom="text", x=-20, y=88, label= code,
+              color="black")
+r
+```
+
+![](README_files/figure-markdown_github/addcode-1.png)
 
 Last updated: `2019-12-13`
