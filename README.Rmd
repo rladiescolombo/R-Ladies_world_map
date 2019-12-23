@@ -102,7 +102,7 @@ q
 code <- paste("R_Ladies_Global %>% filter(Chapter == ``Colombo``, Country == ``Sri Lanka``)"  )
 
 r <- q + annotate(geom="text", x=-20, y=88, label= code,
-              color="black")
+              color="black", fontface=2)
 r
 ```
 
