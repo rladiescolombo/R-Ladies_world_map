@@ -114,4 +114,8 @@ r
 
 ![](README_files/figure-markdown_github/twittercover-1.png)
 
+``` r
+ggsave(here::here("R-ladiestwittermap.png"), width = 15, height = 7)
+```
+
 Last updated: `2019-12-24`
