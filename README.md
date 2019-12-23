@@ -69,7 +69,8 @@ p <- p +
     point.padding = 0.1,
     segment.color = "grey50",
     nudge_y = -20,
-    color = "blueviolet"
+    color = "blueviolet",
+    fontface=2,
   ) +
   theme(axis.title = element_blank())
 p
@@ -102,4 +103,15 @@ r
 
 ![](README_files/figure-markdown_github/addcode-1.png)
 
-Last updated: `2019-12-13`
+``` r
+## Change positioning for twitter coverpage
+code <- paste("R_Ladies_Global %>% filter(Chapter == ``Colombo``, Country == ``Sri Lanka``)"  )
+
+r <- q + annotate(geom="text", x=-20, y=40, label= code,
+              color="black", fontface =2)
+r
+```
+
+![](README_files/figure-markdown_github/twittercover-1.png)
+
+Last updated: `2019-12-24`
